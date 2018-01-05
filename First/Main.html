@@ -1,0 +1,63 @@
+    <div ng-controller="crudController">
+        <div class="row" style="background:#CDDC39;padding:10px;padding-top:30px;">
+            <div class="col-lg-offset-3 col-lg-6">
+                <div class="col-lg-4">
+
+                    <input type="text" class="form-control" placeholder="name" ng-model="Employee.Name">
+                </div>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control" placeholder="city" ng-model="Employee.City">
+                </div>
+                <div class=" col-lg-4">
+                    <button class="btn btn-success" ng-click="AddEmployee()">Add Employee</button>
+                </div>
+            </div>
+        </div>
+        <div class="row " style="background:#cddc39; padding:5px">
+            <div class="col-lg-offset-3 col-lg-6">
+                <span class="input-group">
+                    <input type="text" ng-model="filter.key" class="form-control">
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-search" ng-click="searchEmployee()"></i>
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-hovered">
+                <thead class="bg-warning">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+
+                        <th>Sr#</th>
+                        <th>Name</th>
+                        <th>City</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="employee in employees |filter:filter.key|orderBy:'name'">
+                        <td></td>
+
+                        <td></td>
+                        <td></td>
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.city}}</td>
+                        <td>
+                            <span class="btn btn-default">
+                                <i class="glyphicon glyphicon-edit" ng-click="editEmployee()"></i>
+                            </span>
+                            <span class="btn btn-default">
+                                <i class="glyphicon glyphicon-trash" ng-click="deleteEmployee()"></i>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a href="#/Update">Update</a>

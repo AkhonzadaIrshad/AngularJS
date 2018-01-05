@@ -1,0 +1,63 @@
+<html ng-app="mySPA">
+
+<head>
+    <title>My SPA Application</title>
+    <link rel="stylesheet" href="../First/Content/Styles/bootstrap.min.css">
+</head>
+
+<body class="container-fluid">
+
+    <div ng-view></div>
+
+
+    <script src="../First/Scripts/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+
+    <script>
+        var app = angular.module('mySPA',  ['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    controller: 'crudController',
+                    templateUrl: 'Main.html',l
+                })
+                .when('/Update', {
+                    controller: 'crudController',
+                    templateUrl: 'Update.html'
+                })
+                .otherwise({ redirectTo: '/' });
+
+        });
+     
+        app.controller('crudController', function ($scope) {
+
+            $scope.employees = [{ id: 1, name: 'Irshad', city: 'Lahore' },
+            { id: 2, name: 'Ahmed', city: 'Karachi' },
+            { id: 3, name: 'Zeeshan', city: 'Islamabad' },
+            { id: 4, name: 'Afzal', city: 'Multan' },
+            { id: 5, name: 'Faizan', city: 'Rawalpindi' }
+            ];
+            $scope.editEmployee = function () {
+
+            };
+            $scope.deleteEmployee = function () {
+
+            };
+            $scope.AddEmployee = function () {
+                $scope.employees.push({
+                    id: 1,
+                    name: $scope.Employee.Name,
+                    city: $scope.Employee.City
+
+                });
+            };
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>
